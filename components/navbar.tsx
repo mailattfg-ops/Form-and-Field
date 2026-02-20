@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Hexagon, Phone, Menu, X } from "lucide-react";
-import { WHATSAPP_NUMBER } from "@/data/site";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -29,9 +29,7 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        "Hello, I would like to book a free consultation."
-    )}`;
+    const whatsappLink = getWhatsAppLink("Hello, I would like to book a free consultation.");
 
     const navLinks = [
         { name: "Services", href: "#services" },
@@ -61,7 +59,7 @@ export function Navbar() {
                         </div>
                         <div className="flex flex-col">
                             <span className="text-lg font-black tracking-tight text-slate-900 leading-none">Form<span className="text-brand-600">&</span>Field</span>
-                            <span className="text-[5px] font-bold uppercase tracking-[0.2em] text-brand-600 mt-0.5">Study Abroad Consultancy</span>
+                            <span className="text-[5px] font-bold uppercase tracking-[0.2em] text-slate-600 mt-0.5">Study Abroad Consultancy</span>
                         </div>
                     </Link>
 
@@ -80,15 +78,13 @@ export function Navbar() {
 
                     {/* Desktop CTA */}
                     <div className="hidden md:flex items-center gap-4 shrink-0">
-                        <a
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href="#contact"
                             className="group flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-500/20 transition-all hover:bg-brand-700 hover:shadow-brand-500/40"
                         >
                             <Phone className="h-4 w-4 fill-white" />
-                            <span>Free Call</span>
-                        </a>
+                            <span>Contact Us</span>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -145,15 +141,14 @@ export function Navbar() {
                                     </div>
 
                                     <div className="mt-auto pt-8 border-t border-slate-100 pb-8">
-                                        <a
-                                            href={whatsappLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                        <Link
+                                            href="#contact"
+                                            onClick={() => setMobileMenuOpen(false)}
                                             className="flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 py-4 text-base font-bold text-white shadow-xl shadow-brand-500/20"
                                         >
                                             <Phone className="h-5 w-5 fill-white" />
-                                            Book Free Consultation
-                                        </a>
+                                            Book Consultation
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

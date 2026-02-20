@@ -71,7 +71,8 @@ export const highlights = [
   { title: "High Visa Success Rate", description: "Well-structured applications backed by profile-specific strategy.", icon: ShieldCheck },
   { title: "Trusted Consultants", description: "Dedicated advisors with transparent communication and accountability.", icon: Handshake },
   { title: "End-to-End Support", description: "From discovery call to pre-departure orientation, everything covered.", icon: Route },
-  { title: "Personalized Guidance", description: "Every recommendation is customized to your budget and goals.", icon: Target }
+  { title: "Personalized Guidance", description: "Every recommendation is customized to your budget and goals.", icon: Target },
+  { title: "24/7 Global Support", description: "Around-the-clock assistance for all your queries and pre-departure needs.", icon: Sparkles }
 ] as const;
 
 export const roadmap = [
@@ -85,22 +86,22 @@ export const roadmap = [
 
 export const testimonials = [
   {
-    name: "Aarav Sharma",
-    role: "Master's Student, Canada",
+    name: "Gokul Krishnan",
+    role: "MS in Data Science, Canada (from Kochi)",
     message:
-      "Their team helped me choose the right program and guided me through every document step. My visa got approved without stress."
+      "The team helped me secure admission in a top Canadian university. Their guidance on GIC and visa filing was exceptional and stress-free."
   },
   {
-    name: "Nisha Patel",
-    role: "MBA Student, UK",
+    name: "Sneha Matthew",
+    role: "BSc Nursing, UK (from Kottayam)",
     message:
-      "I got shortlisting support, SOP feedback, and scholarship advice. The process was clear, quick, and professional."
+      "FormField made my dream of studying nursing in the UK a reality. Their support during the NMC registration and visa process was invaluable."
   },
   {
-    name: "Rahul Menon",
-    role: "Engineering Student, Germany",
+    name: "Arjun P.V.",
+    role: "Engineering, Germany (from Trivandrum)",
     message:
-      "From profile evaluation to interview preparation, they stayed involved at every stage. Highly reliable consultants."
+      "Best consultants in Kerala for Germany. They helped me with everything from APS to university applications, making the complex process very smooth."
   }
 ] as const;
 

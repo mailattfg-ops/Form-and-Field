@@ -2,22 +2,37 @@
 
 import { useState, useEffect, type ChangeEvent, type FormEvent, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { WHATSAPP_NUMBER, allCountries } from "@/data/site";
+import { motion } from "framer-motion";
+import { Sparkles, Send, MessageSquare, Globe, User, Phone, Mail, GraduationCap, Percent } from "lucide-react";
+import { allCountries } from "@/data/site";
+import { getWhatsAppLink, formatWhatsAppMessage } from "@/lib/whatsapp";
+import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 
-function ContactFormContent() {
+function ContactFormContent({ variant = "default" }: { variant?: "default" | "plain" }) {
+  const isPlain = variant === "plain";
   const searchParams = useSearchParams();
   const [form, setForm] = useState({
     name: "",
     phone: "",
     email: "",
     country: "",
+    service: "",
+    qualification: "",
+    percentage: "",
     message: ""
   });
 
   useEffect(() => {
     const countryParam = searchParams.get("country");
-    if (countryParam) {
-      setForm((prev) => ({ ...prev, country: countryParam }));
+    const serviceParam = searchParams.get("service");
+
+    if (countryParam || serviceParam) {
+      setForm((prev) => ({
+        ...prev,
+        country: countryParam || prev.country,
+        service: serviceParam || prev.service
+      }));
     }
   }, [searchParams]);
 
@@ -28,112 +43,136 @@ function ContactFormContent() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const formatted = [
-      "New Consultation Inquiry",
-      "",
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
-      `Email: ${form.email}`,
-      `Interested Country: ${form.country}`,
-      `Message: ${form.message}`
-    ].join("\n");
-
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(formatted)}`;
+    const formatted = formatWhatsAppMessage(form);
+    const url = getWhatsAppLink(formatted);
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <form
+    <motion.form
       onSubmit={onSubmit}
-      className="relative overflow-hidden rounded-2xl border-t-4 border-brand-500 bg-white p-6 shadow-xl sm:p-8"
+      initial={isPlain ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className={
+        isPlain
+          ? "relative flex flex-col gap-6"
+          : "relative overflow-hidden rounded-3xl border border-white/40 bg-white/40 p-6 shadow-2xl backdrop-blur-2xl ring-1 ring-white/20 sm:p-8"
+      }
       aria-label="Consultation contact form"
     >
-      <div className="relative z-10">
-        <h3 className="text-2xl font-bold text-slate-900">Get Free Consultation</h3>
-        <p className="mt-2 text-sm text-slate-600">Fill the form to connect on WhatsApp.</p>
-        <div className="mt-5 grid gap-3">
-          <div className="grid grid-cols-2 gap-3">
-            <Input label="Name" name="name" type="text" value={form.name} onChange={onChange} required />
-            <Input label="Phone" name="phone" type="tel" value={form.phone} onChange={onChange} required />
-          </div>
-          <Input label="Email" name="email" type="email" value={form.email} onChange={onChange} required />
+      {/* Premium Inner Glow */}
+      {!isPlain && (
+        <div className="absolute -inset-[100%] z-0 bg-gradient-to-tr from-brand-500/5 via-transparent to-blue-500/5 animate-slow-pulse" />
+      )}
 
-          <label className="grid gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-            Interested Country
-            <div className="relative">
-              <select
-                name="country"
-                value={form.country}
-                onChange={onChange}
-                required
-                className="w-full appearance-none rounded-lg border border-slate-200 bg-white/50 px-3 py-2 text-sm text-slate-800 outline-none ring-brand-500/20 transition focus:border-brand-500 focus:bg-white focus:ring-4"
-              >
-                <option value="" disabled>Select a country</option>
-                {allCountries.map((country) => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
-                <option value="Other">Other</option>
-              </select>
-              <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-              </div>
-            </div>
-          </label>
-          <label className="grid gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-            Message
+      <div className="relative z-10 flex flex-col gap-6">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-3xl font-black tracking-tight text-slate-900">
+            Get Started <span className="text-brand-600">Today</span>
+          </h3>
+          <p className="text-sm font-medium text-slate-500 leading-relaxed">
+            Fill the form below and our experts will reach out on WhatsApp.
+          </p>
+        </div>
+
+        <div className="grid gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <Input icon={User} label="Full Name" name="name" type="text" placeholder="John Doe" value={form.name} onChange={onChange} required />
+            <Input icon={Phone} label="Phone Number" name="phone" type="tel" placeholder="+91 ..." value={form.phone} onChange={onChange} required />
+          </div>
+
+          <Input icon={Mail} label="Email Address" name="email" type="email" placeholder="john@example.com" value={form.email} onChange={onChange} required />
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <Select
+              icon={MessageSquare}
+              label="Service"
+              name="service"
+              value={form.service}
+              onChange={onChange}
+              required
+              placeholder="Select a service"
+              options={[
+                "Study Abroad Consultation",
+                "Visa Assistance",
+                "Career Guidance",
+                "University Admission Help",
+                "Immigration Support",
+                "Scholarship Guidance",
+                "Other"
+              ]}
+            />
+            <Select
+              icon={Globe}
+              label="Destination"
+              name="country"
+              value={form.country}
+              onChange={onChange}
+              required
+              placeholder="Select a country"
+              options={[...allCountries, "Other"]}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <Select
+              icon={GraduationCap}
+              label="Qualification"
+              name="qualification"
+              value={form.qualification}
+              onChange={onChange}
+              required
+              placeholder="Select Qualification"
+              options={[
+                "10th Standard",
+                "12th Standard",
+                "Undergraduate",
+                "Postgraduate",
+                "Diploma",
+                "Others"
+              ]}
+            />
+            <Input icon={Percent} label="Percentage" name="percentage" type="text" placeholder="e.g. 85" value={form.percentage} onChange={onChange} required />
+          </div>
+
+          <label className="grid gap-1.5 text-xs font-bold uppercase tracking-widest text-slate-500">
+            <span className="flex items-center gap-1.5">
+              <MessageSquare className="h-3.5 w-3.5 text-brand-600" />
+              Additional Message
+            </span>
             <textarea
               name="message"
               value={form.message}
               onChange={onChange}
               required
-              rows={2}
-              className="w-full rounded-lg border border-slate-200 bg-white/50 px-3 py-2 text-sm text-slate-800 outline-none ring-brand-500/20 transition focus:border-brand-500 focus:bg-white focus:ring-4"
+              placeholder="Tell us more about your goals..."
+              rows={3}
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-4 text-sm font-semibold text-slate-800 outline-none ring-brand-500/10 transition-all hover:bg-white focus:border-brand-500 focus:bg-white focus:ring-4 placeholder:font-normal placeholder:text-slate-300"
             />
           </label>
         </div>
+
         <button
           type="submit"
-          className="mt-5 w-full rounded-lg bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/30 transition hover:from-brand-700 hover:to-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-200 active:scale-[0.98]"
+          className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-slate-900 py-5 text-sm font-bold text-white shadow-xl transition-all hover:bg-brand-600 active:scale-[0.98] mt-4"
         >
-          Send Request
+          <div className="absolute inset-x-0 -top-full h-full bg-gradient-to-b from-white/20 to-transparent transition-all group-hover:top-0" />
+          <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          Submit for Free Consultation
         </button>
       </div>
-    </form>
+
+      {!isPlain && (
+        <div className="absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-brand-500/10 blur-3xl" />
+      )}
+    </motion.form>
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ variant = "default" }: { variant?: "default" | "plain" }) {
   return (
     <Suspense fallback={<div className="h-96 w-full animate-pulse rounded-2xl bg-white/20" />}>
-      <ContactFormContent />
+      <ContactFormContent variant={variant} />
     </Suspense>
-  );
-}
-
-type InputProps = {
-  label: string;
-  name: string;
-  type: "text" | "email" | "tel";
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
-};
-
-function Input({ label, name, type, value, onChange, required }: InputProps) {
-  return (
-    <label className="grid gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-      {label}
-      <input
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className="w-full rounded-lg border border-slate-200 bg-white/50 px-3 py-2 text-sm text-slate-800 outline-none ring-brand-500/20 transition focus:border-brand-500 focus:bg-white focus:ring-4"
-      />
-    </label>
   );
 }

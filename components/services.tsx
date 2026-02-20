@@ -1,19 +1,41 @@
 "use client";
 
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { services } from "@/data/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { ArrowRight } from "lucide-react";
+import { Section } from "@/components/ui/section";
 
 export function ServicesSection() {
-  return (
-    <section id="services" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
-      {/* Decorative background element */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-brand-100/50 blur-3xl" />
+  const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
-      <div className="container-shell relative z-10">
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const handleServiceClick = (serviceTitle: string) => {
+    router.push(`/?service=${encodeURIComponent(serviceTitle)}#contact`);
+  };
+
+  return (
+    <Section id="services" className="bg-slate-50/50">
+      {/* Dynamic Background Accents */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200/50 to-transparent" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div style={{ y: y1 }} className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-brand-50/30 blur-3xl" />
+        <motion.div style={{ y: y2 }} className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-brand-100/20 blur-3xl" />
+      </div>
+
+      <div ref={containerRef} className="container-shell relative z-10">
         <SectionHeading
           title="Tailored Services for"
           highlight="Every Step"
@@ -26,10 +48,10 @@ export function ServicesSection() {
 
             return (
               <Reveal key={service.title} delay={index * 0.1}>
-                <motion.article
-                  whileHover={{ y: -8 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-shadow hover:shadow-2xl"
+                <motion.div
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  onClick={() => handleServiceClick(service.title)}
+                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 border border-brand-100 transition-all hover:shadow-premium cursor-pointer"
                 >
                   {/* Image Container */}
                   <div className="relative h-48 w-full overflow-hidden">
@@ -60,12 +82,12 @@ export function ServicesSection() {
                       Learn More <ArrowRight className="h-4 w-4" />
                     </div>
                   </div>
-                </motion.article>
+                </motion.div>
               </Reveal>
             );
           })}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

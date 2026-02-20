@@ -1,3 +1,4 @@
+import { ContactSection } from "@/components/contact-section";
 import { CountriesSection } from "@/components/countries";
 import { FaqSection } from "@/components/faq";
 import { FooterSection } from "@/components/footer";
@@ -20,6 +21,7 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <RoadmapSection />
       <TestimonialsSection />
+      <ContactSection />
       <FaqSection />
       <FooterSection />
       <WhatsAppFloat />

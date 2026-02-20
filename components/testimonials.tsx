@@ -1,16 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Quote, Star, UserCircle2 } from "lucide-react";
 import { testimonials } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Quote } from "lucide-react";
+import { Section } from "@/components/ui/section";
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
-      {/* Decorative background element */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-brand-100/30 blur-3xl opacity-50" />
+    <Section id="testimonials" className="bg-slate-50/50">
+      {/* Decorative Elements */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-50/30 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-shell relative z-10">
         <SectionHeading
@@ -23,9 +25,9 @@ export function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((item, index) => (
             <Reveal key={item.name} delay={index * 0.1}>
-              <motion.article
-                whileHover={{ y: -8 }}
-                className="group relative h-full flex flex-col p-8 rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-2xl hover:ring-brand-500/20"
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="glass-premium flex h-full flex-col p-8 transition-all hover:shadow-premium"
               >
                 {/* Quotation Icon Badge */}
                 <div className="absolute -top-4 -right-4 h-12 w-12 flex items-center justify-center rounded-2xl bg-brand-600 text-white shadow-xl opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
@@ -62,11 +64,11 @@ export function TestimonialsSection() {
                     </svg>
                   ))}
                 </div>
-              </motion.article>
+              </motion.div>
             </Reveal>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

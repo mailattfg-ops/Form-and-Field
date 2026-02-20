@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
-import { WHATSAPP_NUMBER } from "@/data/site";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export function WhatsAppFloat() {
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    "Hello, I would like to know more about your consultation services."
-  )}`;
+  const href = getWhatsAppLink("Hello, I would like to know more about your consultation services.");
 
   return (
     <Link

@@ -26,7 +26,6 @@ const charVariants = {
 };
 
 export function SectionHeading({
-  subtitle,
   title,
   highlight,
   description,
@@ -58,16 +57,7 @@ export function SectionHeading({
       className={`relative ${isCentered ? "mx-auto text-center" : "text-left"
         } max-w-4xl ${className}`}
     >
-      {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-brand-600"
-        >
-          {subtitle}
-        </motion.p>
-      )}
+
 
       <motion.h2
         initial="hidden"
@@ -93,7 +83,7 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-2 md:mt-4 xl:mt-6 text-base text-slate-600 sm:text-lg leading-relaxed max-w-2xl mx-auto"
+          className="mt-4 text-base text-slate-600 sm:text-lg leading-relaxed max-w-2xl mx-auto"
         >
           {description}
         </motion.p>

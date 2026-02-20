@@ -5,17 +5,18 @@ import { roadmap } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { Section } from "@/components/ui/section";
 
 export function RoadmapSection() {
   return (
-    <section id="roadmap" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
+    <Section id="roadmap">
       {/* Decorative background Elements */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-100/20 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 left-1/4 w-96 h-96 border border-brand-100/10 rounded-full scale-125" />
       </div>
 
-      <div className="container-shell relative z-10">
+      <div className="container-shell relative z-10 py-2">
         <SectionHeading
           title="Your Journey in"
           highlight="6 Clear Steps"
@@ -27,9 +28,9 @@ export function RoadmapSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {roadmap.map((step, index) => (
             <Reveal key={step} delay={index * 0.1}>
-              <motion.article
-                whileHover={{ y: -8 }}
-                className="group relative h-full flex flex-col p-8 rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-2xl hover:ring-brand-500/20"
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="glass-premium group flex h-full flex-col p-8 transition-all hover:shadow-premium"
               >
                 {/* Step Number Badge with Arrow Motif */}
                 <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-lg ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white mb-8 text-xl font-black italic">
@@ -68,11 +69,11 @@ export function RoadmapSection() {
                     </div>
                   )}
                 </div>
-              </motion.article>
+              </motion.div>
             </Reveal>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

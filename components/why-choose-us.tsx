@@ -2,69 +2,63 @@
 
 import { motion } from "framer-motion";
 import { highlights } from "@/data/site";
-import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/components/ui/reveal";
+import { Section } from "@/components/ui/section";
 
 export function WhyChooseUsSection() {
   return (
-    <section id="why-us" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-100/30 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 border border-brand-100/20 rounded-full scale-110" />
-      </div>
+    <Section id="benefits" className="bg-white">
+      {/* Background Dots & Glow Blobs */}
+      <div className="absolute inset-0 z-0 bg-dot-pattern opacity-[0.2]" />
+      <div className="glow-blob -top-24 -left-24 bg-brand-200 opacity-20" />
+      <div className="glow-blob -bottom-24 -right-24 bg-blue-100 opacity-20" />
 
-      <div className="container-shell relative z-10">
+      <div className="container-shell relative z-10 py-2">
         <SectionHeading
           title="Why Choose"
-          highlight="FormField?"
-          description="We combine decade-long experience with profile-specific strategy to ensure your global success."
-          className="mb-16"
+          highlight="FormField"
+          description="We combine deep industry expertise with a student-first approach to make your global education journey seamless."
         />
 
-        {/* 2+3 Grid Layout - No Empty Space */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {highlights.map((item, index) => {
             const Icon = item.icon;
 
-            // Layout: Row 1 has 2 big cards (6:6), Row 2 has 3 smaller cards (4:4:4)
-            const spans = [
-              "lg:col-span-6", // Card 1
-              "lg:col-span-6", // Card 2
-              "lg:col-span-4", // Card 3
-              "lg:col-span-4", // Card 4
-              "lg:col-span-4"  // Card 5
-            ];
-
             return (
-              <Reveal key={item.title} delay={index * 0.1} className={spans[index]}>
-                <motion.article
-                  whileHover={{ y: -6 }}
-                  className="group relative h-full flex flex-col items-start rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-xl hover:ring-brand-500/20"
+              <Reveal key={item.title} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 border border-brand-100 transition-all hover:shadow-premium"
                 >
-                  {/* Subtle Background Accent */}
-                  <div className="absolute right-0 top-0 h-24 w-24 bg-brand-50/50 [mask-image:radial-gradient(circle_at_top_right,black,transparent)] opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="flex flex-col h-full">
+                    {/* Icon Container - Matching Services Look */}
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-brand-600 shadow-lg ring-1 ring-slate-100 transition-all group-hover:bg-brand-600 group-hover:text-white">
+                      <Icon className="h-6 w-6" strokeWidth={2} />
+                    </div>
 
-                  {/* Service-style Icon Badge */}
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-lg ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white group-hover:shadow-brand-500/20 mb-8">
-                    <Icon className="h-7 w-7 transition-transform group-hover:scale-110" />
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-3 text-base text-slate-600 leading-relaxed">
+                      {item.description}
+                    </p>
+
+                    {/* Interactive Bottom Bar */}
+                    <div className="mt-auto pt-8">
+                      <div className="h-1 w-8 rounded-full bg-slate-100 transition-all duration-500 group-hover:w-full group-hover:bg-brand-500/20" />
+                    </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-4 text-slate-600 leading-relaxed group-hover:text-slate-700">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-8 h-1 w-0 bg-brand-500/20 transition-all duration-500 group-hover:w-1/3 rounded-full" />
-                </motion.article>
+                  {/* Top Edge Glow */}
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </motion.div>
               </Reveal>
             );
           })}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

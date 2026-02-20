@@ -3,10 +3,7 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react
 
 export function FooterSection() {
   return (
-    <footer className="relative mt-12 overflow-hidden border-t border-brand-100 bg-white/80 py-16 backdrop-blur-xl">
-      {/* Decorative background blobs */}
-      <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-50/50 blur-3xl" />
-      <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-slate-50/50 blur-3xl" />
+    <footer className="relative overflow-hidden border-t border-slate-100 bg-white py-16">
 
       <div className="container-shell relative z-10">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
@@ -14,10 +11,10 @@ export function FooterSection() {
           <div className="lg:col-span-4">
             <Link href="/" className="inline-block">
               <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tighter text-slate-900 leading-none">
+                <span className="font-heading text-2xl font-black tracking-tighter text-slate-900 leading-none">
                   Form<span className="text-brand-600">&</span>Field
                 </span>
-                <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-600">
+                <span className="mt-1 text-[6px] font-bold uppercase tracking-[0.2em] text-slate-600">
                   Study Abroad Consultancy
                 </span>
               </div>

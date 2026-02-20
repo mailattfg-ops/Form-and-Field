@@ -1,113 +1,105 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Phone, ArrowRight, Plane, GraduationCap, Globe, Hexagon } from "lucide-react";
-import { ContactForm } from "@/components/contact-form";
-import { WHATSAPP_NUMBER } from "@/data/site";
+import { Phone, ArrowRight, GraduationCap, Globe, Hexagon } from "lucide-react";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export function HeroSection() {
-  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    "Hello, I would like to book a free consultation."
-  )}`;
+  const whatsappLink = getWhatsAppLink("Hello, I would like to book a free consultation.");
 
   return (
-    <section className="relative overflow-hidden pb-12 pt-32 lg:pb-20 lg:pt-40 min-h-[90vh] flex items-center">
-      <div className="absolute inset-0 z-0 bg-grid-pattern opacity-[0.4]" />
+    <section className="relative min-h-[90vh] lg:h-screen flex items-center overflow-hidden bg-slate-900">
+      {/* Cinematic Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero_bg.webp"
+          alt="Global Education Background"
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
+        {/* Professional Overlays for Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-[2px] z-10" />
+
+        {/* Brand Glow Blobs for Depth */}
+        <div className="glow-blob -top-24 -left-24 bg-brand-500 opacity-20 z-20" />
+        <div className="glow-blob -bottom-24 -right-24 bg-orange-500 opacity-10 z-20" />
+        <div className="absolute inset-0 bg-dot-pattern opacity-[0.07] z-20" />
+      </div>
+
+      <div className="container-shell relative z-30 pt-36 lg:pt-48 pb-12">
+        <div className="max-w-3xl">
 
 
-      <div className="container-shell relative z-10 grid gap-12 lg:grid-cols-12 lg:items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative lg:col-span-6"
-        >
-          <div className="relative z-10 pt-0">
-            {/* Nav space compensated - Branding moved to Navbar */}
-
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-6 flex items-center gap-3"
-            >
-
-            </motion.div>
-
-            <h1 className="max-w-2xl text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="text-gradient inline-block bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent [-webkit-background-clip:text]">
-                Global Education
-              </span>
-              <br />
+          {/* Headline - Viewport Corrected */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl xl:text-6xl">
+              Global <span className="text-brand-500">Education</span> <br />
               Made Simple.
             </h1>
 
-            <p className="mt-6 max-w-lg text-base sm:text-lg text-slate-600 leading-relaxed">
-              Expert guidance for university admissions, visa filing, and relocation. We turn your study abroad dreams into reality.
+            <p className="mt-6 text-base lg:text-lg text-slate-300 leading-relaxed font-medium max-w-xl">
+              Expert guidance for university admissions, visa filing, and relocation. We turn your study abroad dreams into reality with personalized care and global expertise.
             </p>
 
-            <div className="mt-4  md:mt-6 lg:mt-8 xl:mt-10 flex flex-wrap gap-4">
-              <a
-                href="tel:+919999999999"
-                className="group relative inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-white shadow-xl shadow-brand-500/30 transition-all hover:bg-brand-700 hover:shadow-brand-500/50 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brand-200 overflow-hidden"
-              >
-                <div className="absolute inset-0 rounded-full ring-2 ring-white/20 group-hover:ring-white/40 active:scale-95 transition-all" />
-                <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-white"></span>
-                </span>
-                <span className="relative">Call Now</span>
-              </a>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="#services"
-                className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:border-slate-300 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-slate-100"
+                href={whatsappLink}
+                target="_blank"
+                className="group relative inline-flex items-center gap-3 rounded-xl bg-brand-500 px-6 py-3.5 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold text-white shadow-2xl transition-all hover:bg-brand-600 hover:-translate-y-1 active:scale-[0.98] overflow-hidden"
               >
-                Explore Services
+                <div className="absolute inset-x-0 -top-full h-full bg-white/20 transition-all group-hover:top-0" />
+                <Phone className="h-4 w-4" />
+                <span className="hidden sm:inline">Book Free Consultation</span>
+                <span className="sm:hidden">Book Now</span>
+              </Link>
+
+              <Link
+                href="#countries"
+                className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 backdrop-blur-md px-6 py-3.5 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold text-white shadow-sm transition-all hover:bg-white/10 hover:border-white/40"
+              >
+                <span className="hidden sm:inline">Explore Destinations</span>
+                <span className="sm:hidden">Explore</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
-          </div>
-        </motion.div>
 
-        <motion.div
-          id="contact-form"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="lg:col-span-6 relative flex items-center justify-end lg:mt-0"
-        >
-          {/* Floating animated icons */}
-          <motion.div
-            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-12 -right-8 z-0 text-brand-200 hidden lg:block"
-          >
-            <Plane size={120} strokeWidth={1} />
+            {/* Quick Stats - Repositioned & Optimized */}
+            <div className="mt-12 flex flex-wrap items-center gap-8 lg:gap-12">
+              {[
+                { label: "Success Stories", value: "5000+", icon: Hexagon },
+                { label: "Destinations", value: "20+", icon: Globe },
+                { label: "Expert Counselors", value: "50+", icon: GraduationCap },
+              ].map((stat, idx) => {
+                const StatIcon = stat.icon;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + idx * 0.1 }}
+                    className="flex items-center gap-4"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-brand-400 backdrop-blur-md">
+                      <StatIcon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-black text-white">{stat.value}</div>
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-1/2 -left-12 z-0 text-black hidden lg:block"
-          >
-            <GraduationCap size={140} strokeWidth={1} />
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute -bottom-8 right-12 z-0 text-slate-100 hidden lg:block"
-          >
-            <Globe size={100} strokeWidth={1} />
-          </motion.div>
-
-          {/* Form Container with Backdrop */}
-          <div className="relative w-full max-w-md">
-            <div className="absolute -inset-4 rounded-3xl bg-white/40 blur-xl -z-10" />
-            <ContactForm />
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
