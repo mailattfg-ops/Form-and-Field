@@ -11,6 +11,17 @@ export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [mobileMenuOpen]);
+
+    useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
@@ -97,7 +108,7 @@ export function Navbar() {
                         initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
                         animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
                         exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        className="fixed inset-0 z-40 bg-white/60 lg:hidden"
+                        className="fixed inset-0 z-[60] bg-white/60 lg:hidden"
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         <motion.div
@@ -108,30 +119,42 @@ export function Navbar() {
                             className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white p-8 shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="flex flex-col gap-12 pt-12">
-                                <div className="space-y-6">
-                                    {navLinks.map((link) => (
-                                        <Link
-                                            key={link.name}
-                                            href={link.href}
-                                            onClick={() => setMobileMenuOpen(false)}
-                                            className="block text-2xl font-black text-slate-900 transition-colors hover:text-brand-600"
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    ))}
+                            <div className="flex h-full flex-col pt-4">
+                                {/* Mobile Menu Close Button */}
+                                <div className="flex justify-end">
+                                    <button
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-600 transition-colors hover:bg-brand-50 hover:text-brand-600"
+                                    >
+                                        <X className="h-5 w-5" />
+                                    </button>
                                 </div>
 
-                                <div className="pt-8 border-t border-slate-100">
-                                    <a
-                                        href={whatsappLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 py-4 text-base font-bold text-white shadow-xl shadow-brand-500/20"
-                                    >
-                                        <Phone className="h-5 w-5 fill-white" />
-                                        Book Free Consultation
-                                    </a>
+                                <div className="flex flex-col gap-8 md:gap-12 pt-8 flex-1">
+                                    <div className="space-y-6">
+                                        {navLinks.map((link) => (
+                                            <Link
+                                                key={link.name}
+                                                href={link.href}
+                                                onClick={() => setMobileMenuOpen(false)}
+                                                className="block text-2xl font-black text-slate-900 transition-colors hover:text-brand-600"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-auto pt-8 border-t border-slate-100 pb-8">
+                                        <a
+                                            href={whatsappLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-600 py-4 text-base font-bold text-white shadow-xl shadow-brand-500/20"
+                                        >
+                                            <Phone className="h-5 w-5 fill-white" />
+                                            Book Free Consultation
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import { highlights } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 export function WhyChooseUsSection() {
   return (
-    <section id="why-us" className="relative py-10 sm:py-12 overflow-hidden">
+    <section id="why-us" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-100/30 rounded-full blur-[100px]" />
@@ -14,62 +15,12 @@ export function WhyChooseUsSection() {
       </div>
 
       <div className="container-shell relative z-10">
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.05 } }
-              }}
-              className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
-            >
-              {Array.from("Why Choose ").map((char, i) => (char === " " ? " " : (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              )))}
-              <span className="text-gradient">
-                {Array.from("FormField").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    className="inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </span>
-              {Array.from("?").map((char, i) => (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
-              We combine decade-long experience with profile-specific strategy to ensure your global success.
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeading
+          title="Why Choose"
+          highlight="FormField?"
+          description="We combine decade-long experience with profile-specific strategy to ensure your global success."
+          className="mb-16"
+        />
 
         {/* 2+3 Grid Layout - No Empty Space */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">

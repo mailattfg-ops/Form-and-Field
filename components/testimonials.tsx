@@ -3,59 +3,22 @@
 import { motion } from "framer-motion";
 import { testimonials } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Quote } from "lucide-react";
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative py-10 sm:py-12 overflow-hidden">
+    <section id="testimonials" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-brand-100/30 blur-3xl opacity-50" />
 
       <div className="container-shell relative z-10">
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.05 } }
-              }}
-              className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
-            >
-              {Array.from("What Our ").map((char, i) => (char === " " ? " " : (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              )))}
-              <span className="text-gradient">
-                {Array.from("Clients Say").map((char, i) => (char === " " ? " " : (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    className="inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                )))}
-              </span>
-            </motion.h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
-              Real student stories from successful admissions and visa journeys across the globe.
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeading
+          title="What Our"
+          highlight="Clients Say"
+          description="Real student stories from successful admissions and visa journeys across the globe."
+          className="mb-16"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((item, index) => (

@@ -9,55 +9,16 @@ import { ArrowRight } from "lucide-react";
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative py-10 sm:py-12 overflow-hidden">
+    <section id="services" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-brand-100/50 blur-3xl" />
 
       <div className="container-shell relative z-10">
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.05 } }
-              }}
-              className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
-            >
-              {Array.from("Tailored Services for ").map((char, i) => (char === " " ? " " : (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              )))}
-              <span className="text-gradient">
-                {Array.from("Every Step").map((char, i) => (char === " " ? " " : (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    className="inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                )))}
-              </span>
-            </motion.h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
-              From university selection to landing in your dream country, we provide end-to-end support to ensure your global success.
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeading
+          title="Tailored Services for"
+          highlight="Every Step"
+          description="From university selection to landing in your dream country, we provide end-to-end support to ensure your global success."
+        />
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {

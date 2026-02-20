@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { countries } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 export function CountriesSection() {
   const router = useRouter();
@@ -16,58 +17,13 @@ export function CountriesSection() {
   };
 
   return (
-    <section id="countries" className="relative py-10 sm:py-12 overflow-hidden">
+    <section id="countries" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
       <div className="container-shell mb-16">
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2  bg-brand-50/50 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-brand-600 backdrop-blur-sm"
-            >
-            </motion.div>
-
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.05 } }
-              }}
-              className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
-            >
-              {Array.from("Destinations We ").map((char, i) => (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-              <span className="text-gradient">
-                {Array.from("Serve").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </span>
-            </motion.h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
-              Explore diverse study and career opportunities in top global destinations.
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeading
+          title="Destinations We"
+          highlight="Serve"
+          description="Explore diverse study and career opportunities in top global destinations."
+        />
       </div>
 
       {/* Marquee Slider */}

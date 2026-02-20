@@ -23,7 +23,7 @@ export function HeroSection() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative lg:col-span-6"
         >
-          <div className="relative z-10 pt-8 lg:pt-0">
+          <div className="relative z-10 pt-0">
             {/* Nav space compensated - Branding moved to Navbar */}
 
             <motion.div
@@ -36,7 +36,10 @@ export function HeroSection() {
             </motion.div>
 
             <h1 className="max-w-2xl text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="text-gradient block">Global Education</span>
+              <span className="text-gradient inline-block bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent [-webkit-background-clip:text]">
+                Global Education
+              </span>
+              <br />
               Made Simple.
             </h1>
 
@@ -44,7 +47,7 @@ export function HeroSection() {
               Expert guidance for university admissions, visa filing, and relocation. We turn your study abroad dreams into reality.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-4  md:mt-6 lg:mt-8 xl:mt-10 flex flex-wrap gap-4">
               <a
                 href="tel:+919999999999"
                 className="group relative inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-white shadow-xl shadow-brand-500/30 transition-all hover:bg-brand-700 hover:shadow-brand-500/50 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brand-200 overflow-hidden"

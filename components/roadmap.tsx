@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { roadmap } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { ArrowRight, ChevronRight } from "lucide-react";
 
 export function RoadmapSection() {
   return (
-    <section id="roadmap" className="relative py-10 sm:py-12 overflow-hidden">
+    <section id="roadmap" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
       {/* Decorative background Elements */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-100/20 rounded-full blur-[100px]" />
@@ -15,50 +16,12 @@ export function RoadmapSection() {
       </div>
 
       <div className="container-shell relative z-10">
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.05 } }
-              }}
-              className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
-            >
-              {Array.from("Your Journey in ").map((char, i) => (char === " " ? " " : (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              )))}
-              <span className="text-gradient">
-                {Array.from("6 Clear Steps").map((char, i) => (char === " " ? " " : (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    className="inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                )))}
-              </span>
-            </motion.h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
-              A transparent roadmap that keeps your application and visa preparation on track.
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeading
+          title="Your Journey in"
+          highlight="6 Clear Steps"
+          description="A transparent roadmap that keeps your application and visa preparation on track."
+          className="mb-16"
+        />
 
         {/* Balanced Grid for 6 Steps (3x2) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -77,7 +40,6 @@ export function RoadmapSection() {
                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
                   {step}
                 </h3>
-
                 <p className="mt-4 text-slate-600 leading-relaxed group-hover:text-slate-700">
                   {/* Step descriptions could be added to data/site.ts later, for now we match the Why Choose layout */}
                   Professional handling of your {step.toLowerCase()} to ensure compliance and success.

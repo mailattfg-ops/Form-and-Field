@@ -5,12 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { faqs } from "@/data/site";
 import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="relative py-10 sm:py-12 overflow-hidden">
+    <section id="faq" className="relative py-2 md:py-6 lg:py-8 xl:py-12 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl aspect-square border border-slate-100 rounded-full" />
@@ -18,50 +19,12 @@ export function FaqSection() {
       </div>
 
       <div className="container-shell relative z-10">
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.05 } }
-              }}
-              className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
-            >
-              {Array.from("Frequently Asked ").map((char, i) => (char === " " ? " " : (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 10 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              )))}
-              <span className="text-gradient">
-                {Array.from("Questions").map((char, i) => (char === " " ? " " : (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                    className="inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                )))}
-              </span>
-            </motion.h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
-              Answers to common questions about consultation, admissions, and visa timelines.
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeading
+          title="Frequently Asked"
+          highlight="Questions"
+          description="Answers to common questions about consultation, admissions, and visa timelines."
+          className="mb-16"
+        />
 
         <div className="mx-auto max-w-4xl grid gap-6">
           {faqs.map((faq, index) => {
