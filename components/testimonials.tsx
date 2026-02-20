@@ -1,0 +1,109 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { testimonials } from "@/data/site";
+import { Reveal } from "@/components/ui/reveal";
+import { Quote } from "lucide-react";
+
+export function TestimonialsSection() {
+  return (
+    <section id="testimonials" className="relative py-10 sm:py-12 overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-brand-100/30 blur-3xl opacity-50" />
+
+      <div className="container-shell relative z-10">
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.05 } }
+              }}
+              className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+            >
+              {Array.from("What Our ").map((char, i) => (char === " " ? " " : (
+                <motion.span
+                  key={i}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              )))}
+              <span className="text-gradient">
+                {Array.from("Clients Say").map((char, i) => (char === " " ? " " : (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
+                    className="inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                )))}
+              </span>
+            </motion.h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
+              Real student stories from successful admissions and visa journeys across the globe.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((item, index) => (
+            <Reveal key={item.name} delay={index * 0.1}>
+              <motion.article
+                whileHover={{ y: -8 }}
+                className="group relative h-full flex flex-col p-8 rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/60 transition-all hover:shadow-2xl hover:ring-brand-500/20"
+              >
+                {/* Quotation Icon Badge */}
+                <div className="absolute -top-4 -right-4 h-12 w-12 flex items-center justify-center rounded-2xl bg-brand-600 text-white shadow-xl opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
+                  <Quote className="h-6 w-6" />
+                </div>
+
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-xl font-black text-brand-600 shadow-sm ring-1 ring-brand-100 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                    {item.name
+                      .split(" ")
+                      .map((part) => part[0])
+                      .join("")
+                      .slice(0, 2)}
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                      {item.name}
+                    </h4>
+                    <p className="text-sm font-medium text-slate-500">{item.role}</p>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <Quote className="absolute -left-2 -top-2 h-8 w-8 text-brand-100 opacity-50" />
+                  <p className="relative z-10 text-slate-600 italic leading-relaxed pt-2">
+                    "{item.message}"
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-8 flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="h-4 w-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </motion.article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
