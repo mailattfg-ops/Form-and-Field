@@ -13,7 +13,7 @@ import { Navbar } from "@/components/navbar";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="bg-slate-50/50">
       <Navbar />
       <HeroSection />
       <ServicesSection />

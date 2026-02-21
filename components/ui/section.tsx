@@ -7,7 +7,7 @@ const Section = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
             <section
                 ref={ref}
                 className={cn(
-                    "relative py-12 lg:py-8 xl:py-12 overflow-hidden",
+                    "relative py-6 lg:py-8 xl:py-12 overflow-hidden",
                     className
                 )}
                 {...props}

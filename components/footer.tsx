@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { SITE_ADDRESS, SITE_PHONE, SITE_EMAIL } from "@/data/site";
 
 export function FooterSection() {
   return (
@@ -25,7 +26,6 @@ export function FooterSection() {
             <div className="mt-8 flex gap-4">
               {[
                 { Icon: Instagram, href: "#", label: "Instagram" },
-                { Icon: Linkedin, href: "#", label: "LinkedIn" },
                 { Icon: Facebook, href: "#", label: "Facebook" }
               ].map(({ Icon, href, label }) => (
                 <Link
@@ -48,7 +48,8 @@ export function FooterSection() {
                 { name: "Services", href: "#services" },
                 { name: "Countries", href: "#countries" },
                 { name: "Process", href: "#roadmap" },
-                { name: "FAQ", href: "#faq" }
+                { name: "FAQ", href: "#faq" },
+                { name: "Contact", href: "#contact" }
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -62,28 +63,31 @@ export function FooterSection() {
             </ul>
           </div>
 
-          {/* Support */}
-          <div className="lg:col-span-2">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">Support</h4>
-            <ul className="mt-6 grid gap-4">
-              {["Terms of Service", "Privacy Policy", "Contact Support", "Site Map"].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-slate-600 transition-colors hover:text-brand-600">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Map Location */}
+          <div className="lg:col-span-3">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">Our Location</h4>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-slate-100 shadow-sm ring-1 ring-slate-200/50">
+
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.0241754796234!2d75.78662417452298!3d11.25963175009614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65948b4697a5b%3A0x4eb789600ff9d506!2sEmerald%20Mall%2C%20Mavoor%20Rd%2C%20Arayidathupalam%2C%20Kozhikode%2C%20Kerala%20673004!5e0!3m2!1sen!2sin!4v1771647625615!5m2!1sen!2sin"
+                width="100%"
+                height="120"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale hover:grayscale-0 transition-all duration-500" />
+            </div>
           </div>
 
           {/* Contact Details */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">Get in Touch</h4>
             <div className="mt-6 space-y-4">
               {[
-                { Icon: MapPin, text: "Mumbai, Maharashtra, India" },
-                { Icon: Phone, text: "+91 99999 99999" },
-                { Icon: Mail, text: "hello@formfield.com" }
+                { Icon: MapPin, text: SITE_ADDRESS },
+                { Icon: Phone, text: SITE_PHONE },
+                { Icon: Mail, text: SITE_EMAIL }
               ].map(({ Icon, text }) => (
                 <div key={text} className="flex items-start gap-3 text-slate-600">
                   <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
@@ -102,8 +106,6 @@ export function FooterSection() {
             © {new Date().getFullYear()} <span className="font-bold text-slate-700">Form & Field</span>. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-xs text-slate-400 hover:text-brand-600 underline">Privacy Policy</Link>
-            <Link href="#" className="text-xs text-slate-400 hover:text-brand-600 underline">Cookie Policy</Link>
           </div>
         </div>
       </div>

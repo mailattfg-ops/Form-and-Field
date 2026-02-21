@@ -18,7 +18,7 @@ export function CountriesSection() {
   };
 
   return (
-    <Section id="countries" className="bg-white">
+    <Section id="countries">
       <div className="container-shell mb-0 md:mb-4 lg:mb-8 xl:mb-16">
         <SectionHeading
           title="Destinations We"

@@ -8,7 +8,7 @@ import { Section } from "@/components/ui/section";
 
 export function WhyChooseUsSection() {
   return (
-    <Section id="benefits" className="bg-white">
+    <Section id="benefits">
       {/* Background Dots & Glow Blobs */}
       <div className="absolute inset-0 z-0 bg-dot-pattern opacity-[0.2]" />
       <div className="glow-blob -top-24 -left-24 bg-brand-200 opacity-20" />

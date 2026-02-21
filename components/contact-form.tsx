@@ -158,7 +158,8 @@ function ContactFormContent({ variant = "default" }: { variant?: "default" | "pl
         >
           <div className="absolute inset-x-0 -top-full h-full bg-gradient-to-b from-white/20 to-transparent transition-all group-hover:top-0" />
           <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          Submit for Free Consultation
+          <span className="hidden sm:inline">Submit for Free Consultation</span>
+          <span className="sm:hidden">Submit Now</span>
         </button>
       </div>
 

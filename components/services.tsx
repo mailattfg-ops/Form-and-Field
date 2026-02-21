@@ -27,7 +27,7 @@ export function ServicesSection() {
   };
 
   return (
-    <Section id="services" className="bg-slate-50/50">
+    <Section id="services">
       {/* Dynamic Background Accents */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200/50 to-transparent" />
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -51,7 +51,7 @@ export function ServicesSection() {
                 <motion.div
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   onClick={() => handleServiceClick(service.title)}
-                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 border border-brand-100 transition-all hover:shadow-premium cursor-pointer"
+                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 transition-all hover:shadow-premium cursor-pointer border border-brand-100"
                 >
                   {/* Image Container */}
                   <div className="relative h-48 w-full overflow-hidden">

@@ -12,7 +12,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <Section id="faq" className="bg-white">
+    <Section id="faq">
       <div className="container-shell relative z-10 py-2">
         <SectionHeading
           title="Frequently Asked"

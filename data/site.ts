@@ -16,7 +16,10 @@ import {
   Target
 } from "lucide-react";
 
-export const WHATSAPP_NUMBER = "919999999999";
+export const WHATSAPP_NUMBER = "919745355503";
+export const SITE_PHONE = "+91 97453 55503";
+export const SITE_EMAIL = "hello@formfield.com";
+export const SITE_ADDRESS = "Emarald Mall, 2nd Floor, Mavoor Road, Kozhikode, Pincode: 673004";
 
 export const services = [
   {
@@ -153,4 +156,10 @@ export const allCountries = [
   "Vanuatu", "Venezuela", "Vietnam",
   "Yemen",
   "Zambia", "Zimbabwe"
+] as const;
+export const navLinks = [
+  { name: "Services", href: "#services" },
+  { name: "Destinations", href: "#countries" },
+  { name: "Process", href: "#roadmap" },
+  { name: "FAQ", href: "#faq" }
 ] as const;

@@ -10,7 +10,7 @@ export function HeroSection() {
   const whatsappLink = getWhatsAppLink("Hello, I would like to book a free consultation.");
 
   return (
-    <section className="relative min-h-[90vh] lg:h-screen flex items-center overflow-hidden bg-slate-900">
+    <section className="relative min-h-[90vh] lg:h-screen flex items-end lg:items-center overflow-hidden bg-slate-900">
       {/* Cinematic Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -30,7 +30,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-dot-pattern opacity-[0.07] z-20" />
       </div>
 
-      <div className="container-shell relative z-30 pt-36 lg:pt-48 pb-12">
+      <div className="container-shell relative z-30 pt-32 lg:pt-48 pb-20 lg:pb-12">
         <div className="max-w-3xl">
 
 
@@ -40,7 +40,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl xl:text-6xl">
+            <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl xl:text-6xl">
               Global <span className="text-brand-500">Education</span> <br />
               Made Simple.
             </h1>
@@ -56,7 +56,7 @@ export function HeroSection() {
                 className="group relative inline-flex items-center gap-3 rounded-xl bg-brand-500 px-6 py-3.5 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold text-white shadow-2xl transition-all hover:bg-brand-600 hover:-translate-y-1 active:scale-[0.98] overflow-hidden"
               >
                 <div className="absolute inset-x-0 -top-full h-full bg-white/20 transition-all group-hover:top-0" />
-                <Phone className="h-4 w-4" />
+                <Phone className="h-4 w-4" aria-hidden="true" />
                 <span className="hidden sm:inline">Book Free Consultation</span>
                 <span className="sm:hidden">Book Now</span>
               </Link>
@@ -72,7 +72,7 @@ export function HeroSection() {
             </div>
 
             {/* Quick Stats - Repositioned & Optimized */}
-            <div className="mt-12 flex flex-wrap items-center gap-8 lg:gap-12">
+            <div className="mt-12 hidden lg:flex flex-wrap items-center gap-8 lg:gap-12">
               {[
                 { label: "Success Stories", value: "5000+", icon: Hexagon },
                 { label: "Destinations", value: "20+", icon: Globe },

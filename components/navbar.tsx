@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Hexagon, Phone, Menu, X } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
+import { navLinks } from "@/data/site";
+
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -31,12 +33,7 @@ export function Navbar() {
 
     const whatsappLink = getWhatsAppLink("Hello, I would like to book a free consultation.");
 
-    const navLinks = [
-        { name: "Services", href: "#services" },
-        { name: "Destinations", href: "#countries" },
-        { name: "Process", href: "#roadmap" },
-        { name: "FAQ", href: "#faq" },
-    ];
+
 
     return (
         <>
@@ -90,9 +87,11 @@ export function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-expanded={mobileMenuOpen}
+                        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                         className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-600 transition-colors hover:bg-brand-50 hover:text-brand-600 lg:hidden"
                     >
-                        {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                        {mobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
                     </button>
                 </motion.nav>
             </div>

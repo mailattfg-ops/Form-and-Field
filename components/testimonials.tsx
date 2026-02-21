@@ -9,9 +9,8 @@ import { Section } from "@/components/ui/section";
 
 export function TestimonialsSection() {
   return (
-    <Section id="testimonials" className="bg-slate-50/50">
+    <Section id="testimonials">
       {/* Decorative Elements */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-50/30 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-shell relative z-10">
