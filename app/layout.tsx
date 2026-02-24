@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     images: ["/images/og-image.jpg"],
   },
   icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: "/images/Frame.png",
+    shortcut: "/images/Frame.png",
+    apple: "/images/Frame.png",
   },
 };
 
