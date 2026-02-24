@@ -31,7 +31,9 @@
   }
 
   .glass-premium {
-    @apply rounded-3xl border border-white/40 bg-white/40 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] ring-1 ring-white/20;
+    @apply rounded-3xl border border-white/40 bg-white/40 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] ring-1 ring-white/20;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
   .text-gradient {
@@ -58,6 +60,14 @@
 
   .animate-slow-pulse {
     animation: slow-pulse 10s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .will-change-gpu {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   @keyframes slow-pulse {

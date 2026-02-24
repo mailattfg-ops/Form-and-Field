@@ -29,7 +29,7 @@ export function WhyChooseUsSection() {
               <Reveal key={item.title} delay={index * 0.1}>
                 <motion.div
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 border border-brand-100 transition-all hover:shadow-premium"
+                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 border border-brand-100 transition-all hover:shadow-premium will-change-gpu"
                 >
                   <div className="flex flex-col h-full">
                     {/* Icon Container - Matching Services Look */}

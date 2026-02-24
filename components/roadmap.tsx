@@ -30,7 +30,7 @@ export function RoadmapSection() {
             <Reveal key={step} delay={index * 0.1}>
               <motion.div
                 whileHover={{ y: -5 }}
-                className="glass-premium group flex h-full flex-col p-8 border border-brand-100 transition-all hover:shadow-premium"
+                className="glass-premium group flex h-full flex-col p-8 border border-brand-100 transition-all hover:shadow-premium will-change-gpu"
               >
                 {/* Step Number Badge with Arrow Motif */}
                 <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-lg ring-1 ring-slate-100 transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white mb-8 text-xl font-black italic">

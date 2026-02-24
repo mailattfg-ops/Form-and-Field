@@ -26,7 +26,7 @@ export function TestimonialsSection() {
             <Reveal key={item.name} delay={index * 0.1}>
               <motion.div
                 whileHover={{ y: -5 }}
-                className="glass-premium flex h-full flex-col p-8 transition-all hover:shadow-premium"
+                className="glass-premium flex h-full flex-col p-8 transition-all hover:shadow-premium will-change-gpu"
               >
                 {/* Quotation Icon Badge */}
                 <div className="absolute -top-4 -right-4 h-12 w-12 flex items-center justify-center rounded-2xl bg-brand-600 text-white shadow-xl opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">

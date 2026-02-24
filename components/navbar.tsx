@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Hexagon, Phone, Menu, X } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -41,22 +42,22 @@ export function Navbar() {
                 <motion.nav
                     initial={{ y: -100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    className={`
-            pointer-events-auto flex items-center justify-between gap-8 rounded-full px-6 py-3 transition-all duration-500
-            ${isScrolled
-                            ? "bg-white/80 backdrop-blur-xl border border-brand-100 shadow-2xl shadow-brand-500/10 ring-1 ring-black/5"
-                            : "bg-white/40 backdrop-blur-md border border-white/20 shadow-xl"}
-            max-w-5xl w-full
-          `}
-                >
+                    className="pointer-events-auto flex items-center justify-between gap-8 rounded-full px-4 py-2 transition-all duration-500 will-change-gpu bg-white/80 backdrop-blur-xl border border-brand-100 shadow-2xl shadow-brand-500/10 ring-1 ring-black/5 max-w-5xl w-full"
+   >
                     {/* Logo & Brand */}
-                    <Link href="/" className="flex items-center gap-3 shrink-0">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-500 text-white shadow-lg">
-                            <Hexagon className="h-5 w-5" strokeWidth={3} />
+                    <Link href="/" className="flex items-center gap-0 shrink-0 group transition-all">
+                        <div className="relative h-16 w-16 flex items-center justify-center">
+                            <Image
+                                src="/images/logo.png"
+                                alt="Form & Field Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-lg font-black tracking-tight text-slate-900 leading-none">Form<span className="text-brand-600">&</span>Field</span>
-                            <span className="text-[5px] font-bold uppercase tracking-[0.2em] text-slate-600 mt-0.5">Study Abroad Consultancy</span>
+                            <span className="text-2xl font-black tracking-tight text-slate-900 leading-none">Form<span className="text-brand-600">&</span>Field</span>
+                            <span className="text-[6px] font-bold uppercase tracking-[0.2em] text-slate-600 mt-1">Master the form. Own the field</span>
                         </div>
                     </Link>
 
@@ -100,10 +101,10 @@ export function Navbar() {
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
-                        exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        className="fixed inset-0 z-[60] bg-white/60 lg:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[60] bg-white/60 backdrop-blur-sm lg:hidden will-change-gpu"
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         <motion.div
@@ -111,7 +112,7 @@ export function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white p-8 shadow-2xl"
+                            className="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white p-8 shadow-2xl will-change-gpu"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="flex h-full flex-col pt-4">

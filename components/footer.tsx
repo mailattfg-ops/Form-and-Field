@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import { SITE_ADDRESS, SITE_PHONE, SITE_EMAIL } from "@/data/site";
 
@@ -10,14 +11,24 @@ export function FooterSection() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-block">
-              <div className="flex flex-col">
-                <span className="font-heading text-2xl font-black tracking-tighter text-slate-900 leading-none">
-                  Form<span className="text-brand-600">&</span>Field
-                </span>
-                <span className="mt-1 text-[6px] font-bold uppercase tracking-[0.2em] text-slate-600">
-                  Study Abroad Consultancy
-                </span>
+            <Link href="/" className="inline-block group">
+              <div className="flex items-center gap-0 mb-4">
+                <div className="relative h-16 w-16 flex items-center justify-center transition-transform group-hover:scale-110">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Form & Field Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-heading text-2xl font-black tracking-tighter text-slate-900 leading-none">
+                    Form<span className="text-brand-600">&</span>Field
+                  </span>
+                  <span className="mt-1 text-[6px] font-bold uppercase tracking-[0.2em] text-slate-600">
+                    Master the form. Own the field
+                  </span>
+                </div>
               </div>
             </Link>
             <p className="mt-6 max-w-xs text-base leading-relaxed text-slate-600">

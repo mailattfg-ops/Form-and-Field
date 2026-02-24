@@ -39,6 +39,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="will-change-gpu"
           >
             <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl xl:text-6xl">
               Global <span className="text-brand-500">Education</span> <br />
@@ -85,7 +86,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.8 + idx * 0.1 }}
-                    className="flex items-center gap-4"
+                    className="flex items-center gap-4 will-change-gpu"
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-brand-400 backdrop-blur-md">
                       <StatIcon className="h-6 w-6" />

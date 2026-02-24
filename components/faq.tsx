@@ -28,7 +28,7 @@ export function FaqSection() {
             return (
               <Reveal key={item.question} delay={index * 0.05}>
                 <div
-                  className={`glass-premium overflow-hidden transition-all duration-300 ${isOpen ? 'shadow-premium ring-2 ring-brand-500/20' : 'hover:shadow-md'
+                  className={`glass-premium overflow-hidden transition-all duration-300 will-change-gpu ${isOpen ? 'shadow-premium ring-2 ring-brand-500/20' : 'hover:shadow-md'
                     }`}
                 >
                   <button
@@ -61,6 +61,7 @@ export function FaqSection() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="will-change-gpu"
                       >
                         <div className="px-6 pb-6 pt-0 ml-14">
                           <div className="h-px w-full bg-slate-100/50 mb-4" />

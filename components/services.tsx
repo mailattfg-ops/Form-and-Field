@@ -51,7 +51,7 @@ export function ServicesSection() {
                 <motion.div
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   onClick={() => handleServiceClick(service.title)}
-                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 transition-all hover:shadow-premium cursor-pointer border border-brand-100"
+                  className="glass-premium group flex h-full flex-col overflow-hidden p-8 transition-all hover:shadow-premium cursor-pointer border border-brand-100 will-change-gpu"
                 >
                   {/* Image Container */}
                   <div className="relative h-48 w-full overflow-hidden">
