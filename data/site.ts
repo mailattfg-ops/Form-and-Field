@@ -18,8 +18,9 @@ import {
 
 export const WHATSAPP_NUMBER = "919745355503";
 export const SITE_PHONE = "+91 97453 55503";
-export const SITE_EMAIL = "hello@formfield.com";
+export const SITE_EMAIL = "formandfieldedu@gmail.com";
 export const SITE_ADDRESS = "Emarald Mall, 2nd Floor, Mavoor Road, Kozhikode, Pincode: 673004";
+export const SITE_LINKEDIN = "https://www.linkedin.com/company/form-and-field-study-abroad/";
 
 export const services = [
   {
@@ -60,13 +61,50 @@ export const services = [
   }
 ] as const;
 
+export const programs = [
+  {
+    title: "Diploma in Hospitality and Tourism Management",
+    duration: "6+6 Months (Study+Intern)",
+    institution: "Trinity International College",
+    description: "Trinity International College (TIC) was established in 2003 as a premium private institution in Singapore. We provide high quality academic programs for local and international students taking full-time or part-time courses from primary to tertiary levels. TIC was awarded Edutrust Provisional by the Committee for Private Education (CPE), governed by Singapore's Ministry of Education (MOE) since 2010.",
+    image: "/images/trinity.webp",
+    highlights: ["6 months Industry Attachment", "Awarded Edutrust Provisional"]
+  },
+  {
+    title: "Diploma in Retail Supply Chain Management",
+    duration: "1 Year Program",
+    institution: "Edu Trust Singapore",
+    description: "Build an excellent distribution chain and grasp the pulse of the market. Practical exercises will improve capabilities and lead the retail industry. Through an integrated education model, the course uses data to gain insight into market trends and accurately predict consumer demand, thereby formulating effective sales strategies. The industry internship will allow students to accumulate valuable experience in a real retail environment.",
+    image: "/images/edutrut.webp",
+    highlights: ["Data-driven insights", "Industry internship"]
+  },
+  {
+    title: "Diploma in Logistics and Supply Chain Management",
+    duration: "1 Year Program",
+    institution: "Birmingham Academy",
+    description: "This comprehensive diploma course is designed for students aspiring to build a career in various industries within the Logistics & Supply Chain Management sector. Through a combination of theoretical lessons and practical experiences, students will gain a thorough understanding of the fundamentals of logistics and supply chain management, enhancing their career prospects in this dynamic field.",
+    image: "/images/Birmingha.webp",
+    highlights: ["Theoretical & Practical lessons", "Career-focused"]
+  }
+] as const;
+
+export const programOverview = {
+  locations: ["Singapore", "Malaysia", "Mauritius"],
+  duration: "1 Year",
+  ageLimit: "Up to 45 years",
+  qualification: "10th Pass"
+};
+
 export const countries = [
   { name: "Canada", flag: "🇨🇦", image: "/images/canada.avif" },
   { name: "UK", flag: "🇬🇧", image: "/images/ukavif.avif" },
   { name: "Australia", flag: "🇦🇺", image: "/images/Australia.avif" },
   { name: "Germany", flag: "🇩🇪", image: "/images/Germany.avif" },
   { name: "USA", flag: "🇺🇸", image: "/images/USA.avif" },
-  { name: "New Zealand", flag: "🇳🇿", image: "/images/newZealand.avif" }
+  { name: "New Zealand", flag: "🇳🇿", image: "/images/newZealand.avif" },
+  {name: "Singapore", flag: "🇸🇬", image: "/images/singapore.webp"},
+  {name: "Malaysia", flag: "🇲🇾", image: "/images/malaysia.webp"},
+  {name: "Mauritius", flag: "🇲🇺", image: "/images/mauritius.webp"},
 ] as const;
 
 export const highlights = [

@@ -29,10 +29,11 @@ export function CountriesSection() {
 
 
       <motion.div
-        className="flex gap-6 sm:gap-8 pt-8 md:pt-0"
+        className="flex w-max gap-6 sm:gap-8 pt-8 md:pt-0"
+        initial={{ x: 0 }}
         animate={{ x: "-50%" }}
         transition={{
-          duration: 30,
+          duration: countries.length * 4, // Dynamic duration based on count
           repeat: Infinity,
           ease: "linear"
         }}

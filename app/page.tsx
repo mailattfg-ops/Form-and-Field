@@ -10,6 +10,7 @@ import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { WhyChooseUsSection } from "@/components/why-choose-us";
 
 import { Navbar } from "@/components/navbar";
+import { ProgramsSection } from "@/components/programs";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
+      <ProgramsSection />
       <CountriesSection />
       <WhyChooseUsSection />
       <RoadmapSection />
