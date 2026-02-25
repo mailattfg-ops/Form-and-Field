@@ -21,6 +21,8 @@ export const SITE_PHONE = "+91 97453 55503";
 export const SITE_EMAIL = "formandfieldedu@gmail.com";
 export const SITE_ADDRESS = "Emarald Mall, 2nd Floor, Mavoor Road, Kozhikode, Pincode: 673004";
 export const SITE_LINKEDIN = "https://www.linkedin.com/company/form-and-field-study-abroad/";
+export const SITE_INSTAGRAM = "https://www.instagram.com/form_and_field_?igsh=cHh2bXd1b2Z5YWtl";
+export const SITE_FACEBOOK = "https://www.facebook.com/share/1CAP64nBbk/?mibextid=wwXIfr";
 
 export const services = [
   {

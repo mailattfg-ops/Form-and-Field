@@ -43,21 +43,17 @@ export function Navbar() {
                     initial={{ y: -100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     className="pointer-events-auto flex items-center justify-between gap-8 rounded-full px-4 py-2 transition-all duration-500 will-change-gpu bg-white/80 backdrop-blur-xl border border-brand-100 shadow-2xl shadow-brand-500/10 ring-1 ring-black/5 max-w-5xl w-full"
-   >
+                >
                     {/* Logo & Brand */}
-                    <Link href="/" className="flex items-center gap-0 shrink-0 group transition-all">
-                        <div className="relative h-16 w-16 flex items-center justify-center">
+                    <Link href="/" className="flex items-center gap-0 shrink-0 group transition-all pl-2">
+                        <div className="relative h-12 w-36 flex items-center justify-center">
                             <Image
-                                src="/images/logo.png"
+                                src="/images/NavLogo.png"
                                 alt="Form & Field Logo"
                                 fill
                                 className="object-contain"
                                 priority
                             />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-2xl font-black tracking-tight text-slate-900 leading-none">Form<span className="text-brand-600">&</span>Field</span>
-                            <span className="text-[6px] font-bold uppercase tracking-[0.2em] text-slate-600 mt-1">Master the form. Own the field</span>
                         </div>
                     </Link>
 

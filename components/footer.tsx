@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, Mail, Phone, MapPin, Linkedin } from "lucide-react";
-import { SITE_ADDRESS, SITE_PHONE, SITE_EMAIL, SITE_LINKEDIN } from "@/data/site";
+import { SITE_ADDRESS, SITE_PHONE, SITE_EMAIL, SITE_LINKEDIN, SITE_INSTAGRAM, SITE_FACEBOOK } from "@/data/site";
 
 export function FooterSection() {
   return (
@@ -24,16 +24,16 @@ export function FooterSection() {
 
             <div className="flex gap-5">
               {[
-                { Icon: Instagram, href: "#", label: "Instagram" },
-                { Icon: Facebook, href: "#", label: "Facebook" },
+                { Icon: Instagram, href: SITE_INSTAGRAM, label: "Instagram" },
+                { Icon: Facebook, href: SITE_FACEBOOK, label: "Facebook" },
                 { Icon: Linkedin, href: SITE_LINKEDIN, label: "LinkedIn" }
               ].map(({ Icon, href, label }) => (
                 <Link
                   key={label}
                   href={href}
                   aria-label={label}
-                  target={label === "LinkedIn" ? "_blank" : undefined}
-                  rel={label === "LinkedIn" ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-slate-600 shadow-premium ring-1 ring-slate-200 transition-all hover:bg-brand-600 hover:text-white hover:ring-brand-600 hover:shadow-brand-500/30"
                 >
                   <Icon className="h-5.5 w-5.5" />

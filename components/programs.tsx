@@ -138,16 +138,10 @@ function ProgramCard({ program, index }: { program: Program; index: number }) {
                 {/* Card Content Area - Reduced Spacing */}
                 <div className="flex flex-1 flex-col px-8 py-6 bg-white/70 backdrop-blur-sm">
                     {/* Header Section - Tighter Spacing */}
-                    <div className="mb-4">
-                        <h3 className="text-xl font-black text-slate-900 leading-tight tracking-tight">
+                    <div className="mb-2">
+                        <h3 className="text-xl font-bold text-slate-900 leading-tight tracking-tight">
                             {title}
                         </h3>
-                        {institution && (
-                            <div className="mt-2 flex items-center gap-2 text-xs font-bold text-brand-600">
-                                <GraduationCap className="h-4 w-4" />
-                                <span className="leading-tight opacity-90">{institution}</span>
-                            </div>
-                        )}
                     </div>
 
                     {/* Description Area */}
@@ -175,7 +169,7 @@ function ProgramCard({ program, index }: { program: Program; index: number }) {
                     </div>
 
                     {/* Highlights Section */}
-                    <div className="pt-5 border-t border-slate-200/40">
+                    <div className="pt-2 border-slate-200/40">
                         <div className="flex items-center gap-2 mb-4">
                             <div className="h-4 w-1 bg-brand-500 rounded-full" />
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-800">
