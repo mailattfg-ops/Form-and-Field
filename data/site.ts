@@ -106,7 +106,7 @@ export const countries = [
   { name: "New Zealand", flag: "🇳🇿", image: "/images/newZealand.avif" },
   {name: "Singapore", flag: "🇸🇬", image: "/images/singapore.webp"},
   {name: "Malaysia", flag: "🇲🇾", image: "/images/malaysia.webp"},
-  {name: "Mauritius", flag: "🇲🇺", image: "/images/mauritius.webp"},
+  {name: "Mauritius", flag: "🇲🇺", image: "/images/Mauritius.webp"},
 ] as const;
 
 export const highlights = [
