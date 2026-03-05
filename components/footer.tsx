@@ -108,6 +108,9 @@ export function FooterSection() {
           <p className="text-sm text-slate-500 font-medium">
             © {new Date().getFullYear()} <span className="font-black text-slate-900">Form & Field</span>. All rights reserved.
           </p>
+              <Link href="https://www.thinkforgeglobal.com/" target="_blank" rel="noopener noreferrer">
+                <span className="text-sm text-slate-500 font-medium">Designed and Developed by <span className="font-semibold text-slate-900">Think Forge Global</span></span>
+              </Link>
           <div className="flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
             <Link href="#" className="hover:text-brand-600 transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-brand-600 transition-colors">Terms of Service</Link>
